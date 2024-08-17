@@ -419,11 +419,10 @@ class LoginCommand
 
         $endpoint = $this->endpoint();
         $magic    = new MagicUrl($user, $this->domain(), time() + $expires, $redirect_url);
-        $prefix   = apply_filters('wp_cli_login/url_prefix', '');
 
         $this->persistMagicUrl($magic, $endpoint, $expires);
 
-        return $this->homeUrl($prefix . $endpoint . '/' . $magic->getKey());
+        return $this->homeUrl($endpoint . '/' . $magic->getKey());
     }
 
     /**
